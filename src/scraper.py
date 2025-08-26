@@ -21,23 +21,8 @@ class FirecrawlScraper:
         Returns None if scraping fails.
         """
 
-        # Define the schema for car data extraction
-        car_schema = {
-            "type": "object",
-            "required": [],
-            "properties": {
-                "make": {"type": "string"},
-                "model": {"type": "string"},
-                "year": {"type": "integer"},
-                "price": {"type": "number"},
-                "mileage": {"type": "string"},
-                "fuel_type": {"type": "string"},
-                "transmission": {"type": "string"},
-                "engine_size": {"type": "string"},
-                "color": {"type": "string"},
-                "location": {"type": "string"},
-            },
-        }
+        # Generate schema from CarData model to ensure consistency
+        car_schema = CarData.model_json_schema()
 
         payload = {
             "url": str(url),
